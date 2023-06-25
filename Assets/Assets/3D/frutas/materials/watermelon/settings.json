@@ -1,0 +1,23 @@
+{
+  "prompt_text": "watermelon skin, clear, green and dark green stripes, realistic, highly-detailed",
+  "patch": {
+    "ext": "png",
+    "dtype": "uint8",
+    "width": 512,
+    "height": 512,
+    "url": "https://static-dev.withpoly.com/v3/textures/patches/8f19d391-dd6d-40b5-a83d-f991047da612.png",
+    "patch_id": "CPChyKRa2q"
+  },
+  "seamless_prompt_text": "watermelon skin, clear, green and dark green stripes, realistic, highly-detailed",
+  "seamless_patch_scale": 0.9,
+  "upscale_prompt_text": "watermelon skin, clear, green and dark green stripes, realistic, highly-detailed",
+  "upscale_resolution": 2048,
+  "is_seamless": true,
+  "pbr_mode": "polished",
+  "pbr_generate_color": false,
+  "pbr_generate_normal": true,
+  "pbr_generate_height": false,
+  "pbr_generate_ao": true,
+  "pbr_generate_roughness": true,
+  "pbr_generate_metallic": false
+}

@@ -1,0 +1,22 @@
+{
+  "prompt_text": "red fabric chiffon ultra realistic fabric line Soft cloth orange color, high definition extreme resolution",
+  "patch": {
+    "ext": "png",
+    "dtype": "uint8",
+    "width": 512,
+    "height": 512,
+    "url": "https://static-dev.withpoly.com/v3-voronoi/textures/patches/86a409e5-840c-472e-8989-d2ff20ac98ba.png",
+    "patch_id": "XSxjcZn7G4"
+  },
+  "seamless_prompt_text": "",
+  "seamless_patch_scale": 1.11,
+  "upscale_prompt_text": "red fabric chiffon ultra realistic fabric line Soft cloth orange color, high definition extreme resolution",
+  "is_seamless": true,
+  "pbr_mode": "fabric",
+  "pbr_use_render_as_color": true,
+  "pbr_generate_normal": true,
+  "pbr_generate_height": false,
+  "pbr_generate_ao": true,
+  "pbr_generate_roughness": true,
+  "pbr_generate_metallic": false
+}
