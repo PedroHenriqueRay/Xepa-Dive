@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class MenuManager : MonoBehaviour
 {
     [Header("Change Fov Settings")]
     [SerializeField] Camera mainCamera;
+    [SerializeField] Transform mundi_Position;
+    [SerializeField] Transform start_Position;
     [SerializeField] float transitionDuration;
     [SerializeField] float initialFOV;
     bool isTransitioning = false;
@@ -57,7 +60,7 @@ public class MenuManager : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && !isTransitioning)
                 {
-                    StartCoroutine(TransitionFOV(32.5f, transitionDuration));
+                    //(TransitionFOV(32.5f, transitionDuration));
                     menuStageIndex = 1;
                 }
 
@@ -67,6 +70,8 @@ public class MenuManager : MonoBehaviour
                 mainMenuPanel.SetActive(false);
                 levelSelectionPanel.SetActive(false);
                 WorldPin();
+                
+                
                 break;
             case 2:
                 btnBack.SetActive(true);
@@ -89,7 +94,9 @@ public class MenuManager : MonoBehaviour
                 {
                     selectedGameObject = hit.collider.gameObject;
                     setLevelProperties(selectedGameObject);
-                    StartCoroutine(TransitionFOV(20f, transitionDuration));
+                    //
+                    //StartCoroutine(TransitionFOV(20f, transitionDuration));
+                    //StartCoroutine()
             }
                 else
                 {
@@ -114,7 +121,7 @@ public class MenuManager : MonoBehaviour
                 initialMousePosition = currentMousePosition;
             }
     }
-
+    /*
     public System.Collections.IEnumerator TransitionFOV(float targetFOV, float duration)
     {
         isTransitioning = true;
@@ -133,6 +140,31 @@ public class MenuManager : MonoBehaviour
 
         mainCamera.fieldOfView = targetFOV;
         isTransitioning = false;
+    }
+    */
+
+
+    IEnumerator TransitionCamera(Transform partida, Transform chegada, float duration)
+    {
+
+        isTransitioning = true;
+        partida.position = transform.position;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            transform.position = Vector3.Lerp(partida.position, chegada.position, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = chegada.position;
+        isTransitioning= false;
+        Debug.Log("aconteceu");
+
     }
 
     void setLevelProperties(GameObject gameObject)
@@ -155,10 +187,10 @@ public class MenuManager : MonoBehaviour
             switch (menuStageIndex)
             {
                 case 0:
-                    StartCoroutine(TransitionFOV(60f, transitionDuration));
+                    //StartCoroutine(TransitionFOV(60f, transitionDuration));
                     break;
                 case 1:
-                    StartCoroutine(TransitionFOV(32.5f, transitionDuration));
+                    //StartCoroutine(TransitionFOV(32.5f, transitionDuration));
                     break;
                 default:
                     break;
@@ -169,5 +201,10 @@ public class MenuManager : MonoBehaviour
     public void PlayButton()
     {
         SceneManager.LoadScene("GameplayScene");
+    }
+
+    public void InitialStart()
+    {
+        StartCoroutine(TransitionCamera(start_Position,mundi_Position, 1.5f));
     }
 }
